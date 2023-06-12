@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="style.css">
-  <title>HappyPC</title>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
  
@@ -25,29 +25,39 @@
                 <li class="menu__item"><a class="menu__link" href="">Серверы</a></li>
               </ul>
           </nav>
-          <select name="choose__city" >
-            <option value="">Выбор города</option>
-            <option value="1">Воронеж</option>
-            <option value="2">Санкт-Петербург</option>
-            <option value="3">Белгород</option>
-          </select>
-          </div>
+          <div class="dropdown">
+            <div class="dropdown__inner">
+              <div class="dropbtn">Выбор города</div>
+              <div class="dropdown__content">
+                <a href="">Воронеж</a>
+                <a href="">Санкт-Петербург</a>
+                <a href="">Белгород</a>
+              </div>
+            </div>
+            </div>
+        </div>
     </div>
   </div>
 
   <div class = "secondheader">
       <div class="secondheader__inner container">
           <div class="logo">
-              <img class="logo__img" src="/happypc-logo.webp" alt="#">
-              <a   class="logo__link" href="">HappyPC</a>
+            <a href="/index.html">
+              <img class="logo__img" src="/images/happypc-logo.webp" alt="#">
+              <a class="logo__link" href="">HappyPC</a>
+            </a>
           </div>
         <div class="infromation__block">
-          <a href="">Новый офис компьютерной мастерской HappyPC в Воронеже адрес  Московский проспект, 6</a>
-          <a href="">Заказать сборку, ремонт, обслуживание игровых: пк, ноутбуков и видеокарт</a>
+          <a href="">Новый офис компьютерной мастерской <span class="happypc" >HappyPC</span>  в Воронеже адрес  Московский проспект, 6</a>
+          <a style="color: #dd513a;" href="">Заказать сборку, ремонт, обслуживание игровых: пк, ноутбуков и видеокарт</a>
         </div>
         <a class="button" href="">Каталог</a>
-        <a class="services" href="">Услуги</a>
-        <a class="entry" href="">Вход</a>
+        <div class="services__entry">
+          <a class="services__inner" href="">Услуги</a>
+          <a class="services__inner" href="">Вход</a>
+          
+        </div>
+        
       </div>
       
   </div>

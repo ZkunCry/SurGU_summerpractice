@@ -185,17 +185,17 @@ a{
   max-height: 800px;
   
 }
-.section__inner{
+.computer-section__inner{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.computer__img{
+.computer-section__img{
   height: 50%;
   width: 50%;
 }
-.computer__img img{
+.computer-section__img img{
   max-width: 100%;
   max-height: 100%;
   height: auto;
@@ -219,7 +219,7 @@ a{
   font-size:28px;
   margin-bottom: 12px;
 }
-.orderpc{
+.assebmlypc__orderpc{
   font-size:24px;
   margin-top:15px;
 }

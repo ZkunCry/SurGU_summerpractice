@@ -220,8 +220,51 @@ a{
   margin-bottom: 12px;
 }
 .assebmlypc__orderpc{
+  position: relative;
   font-size:24px;
   margin-top:15px;
+  overflow: hidden;
+  
+}
+
+
+.line:nth-child(1){
+  position: absolute;
+  width:100%;
+  top:0;
+  right:0;
+  height: 3px;
+  background:linear-gradient(to right,red,yellow);
+  animation: animate 2s linear infinite;
+}
+.line:nth-child(2){
+  position: absolute;
+  width:3px;
+  top:0;
+  right:0;
+  height: 100%;
+  background: linear-gradient(to bottom,red,yellow);
+  animation: secondanimate 2s linear infinite;
+  animation-delay:1s;
+}
+.line:nth-child(3){
+  position: absolute;
+  width:100%;
+  bottom:0;
+  right:0;
+  height: 3px;
+  background: linear-gradient(to left,red,yellow);;
+  animation: threeanimate 2s linear infinite;
+}
+.line:nth-child(4){
+  position: absolute;
+  width:3px;
+  top:0;
+  left:0;
+  height: 100%;
+  background: linear-gradient(to top,red,yellow);;
+  animation: fouranimate 2s linear infinite;
+  animation-delay:1s;
 }
 .slider{
   display: flex;
@@ -230,5 +273,41 @@ a{
   width: 40px;
   height: 5px;
   background-color: azure;
+  
 
+}
+
+
+@keyframes animate{
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+@keyframes secondanimate{
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+@keyframes threeanimate{
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(-100%);
+
+  }
+}
+@keyframes fouranimate {
+  0%{
+    transform:translateY(100%) ;
+  }
+  100%{
+    transform:translateY(-100%) ;
+  }
 }

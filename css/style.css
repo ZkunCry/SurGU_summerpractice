@@ -29,8 +29,23 @@ a{
   
 }
 .container{
-  max-width: 1600px  !important;
+  max-width: 1600px;
   margin: 0 auto;
+}
+@media (max-width:1200px) {
+  .container{
+    max-width: 970px;
+  }
+}
+@media(max-width:970px){
+  .container{
+    max-width: 750px;
+  }
+}
+@media(max-width:750px){
+  .container{
+    max-width: none;
+  }
 }
 .menu__item :hover{
   background-color: white;
@@ -323,7 +338,9 @@ a{
   margin-top:20px;
   background-color: white;
   width: 100%;
-  
+}
+.mainsection__column:last-child{
+  margin-bottom: 50px;
 }
 .mainsection__container-1{
   display: flex;
@@ -381,6 +398,7 @@ a{
 }
 .aboutus__column p{
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  padding-right:0.5rem;
 }
 .characteristics{
   display: flex;
@@ -412,4 +430,91 @@ a{
 }
 .abouts__assembly-now{
   color: #7cddb5;
+}
+.button__about {
+  width: 200px;
+  background-color: #dd513a;
+  text-align: center;
+  padding: 1rem ;
+  border-radius: 0 20px 20px;
+  margin-top:1rem;
+  font-weight: 800;
+  font-size:12px;
+
+}
+
+.mainsection-column__header{
+  display: flex;
+  flex-direction: column;
+}
+.mainsection-column__header h1{
+  color: #dd513a;
+  font-weight: 800;
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+.mainsection-column__about{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top:20px;
+}
+.about__numbers{
+  display: flex;
+  width: 100%;
+}
+.about__numbers:last-child{
+  margin-top:20px;
+}
+.about-numbers__block{
+  display: flex;
+  width: 100%;
+
+}
+.circle__block{
+  
+  display: flex;
+  padding: 1rem;
+  border-radius: 50%;
+  min-width: 50px;
+  height: 50px;
+  background-color: #dd513a;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color:#fff;
+  margin-bottom: 8px;
+}
+
+.footer{
+  background-color: #dd513a;
+  color:#fff;
+
+}
+
+
+/*FOOTER*/
+.footer__inner {
+  display: flex;
+  flex-direction: row;
+
+}
+.footer__row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  
+}
+.row__column {
+
+}
+.row__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.list__items {
+  display: flex;
+  align-items: start;
 }

@@ -10,6 +10,7 @@ h1,h2,h3,h4{
 body{
   font-family: PT Sans,Helvetica,Arial,sans-serif;
   background-color: #ECECEC;
+  overflow-x:hidden;
 }
 ul{
   padding: 0;
@@ -26,6 +27,7 @@ a{
 .header{
   display: flex;
   flex-direction: column;
+  
   
 }
 .container{
@@ -44,12 +46,27 @@ a{
   }
   .block{
     display:none !important;
+    
   }
+  .infromation__block{
+    opacity: 0;
+    font-size:10px;
+  }
+  
  
 }
 @media(max-width:750px){
   .container{
-    max-width: none;
+    max-width: 570px;
+  }
+  .mainsection__videos{
+    flex-direction: column !important;
+  }
+  .computer-section__inner{
+    flex-direction: column !important;
+  }
+  .assembly__pc{
+    text-align: center;
   }
 }
 .menu__item :hover{
@@ -338,7 +355,8 @@ a{
 .mainsection{
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
+  align-items: center;
 }
 .mainsection__column{
   display: flex;

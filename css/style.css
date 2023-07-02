@@ -33,6 +33,7 @@ a{
 .container{
   max-width: 1600px;
   margin: 0 auto;
+
 }
 
 @media (max-width:1200px) {
@@ -512,7 +513,7 @@ a{
   
 }
 .aboutus__clients{
-  color:#dd513a;
+  color: #f96c0d;
 }
 .aboutus__assembly{
   color:#7E2323;
@@ -529,9 +530,13 @@ a{
   margin-top:1rem;
   font-weight: 800;
   font-size:12px;
+  transition: all .5s ease;
 
 }
-
+.button__about:hover{
+  transform: translateY(-7px);
+  box-shadow: 6px 7px 12px 0px rgba(34, 60, 80, 0.2);
+}
 .mainsection-column__header{
   display: flex;
   flex-direction: column;

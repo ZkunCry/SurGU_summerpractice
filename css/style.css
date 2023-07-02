@@ -43,11 +43,10 @@ a{
 }
 @media(max-width:970px){
   .container{
-    max-width: 750px ;
+    max-width: 750px;
   }
   .block{
     display:none !important;
-    
   }
   .infromation__block{
     opacity: 0;
@@ -108,7 +107,7 @@ a{
     flex-direction: column;
     margin-top: 0 !important;
   }
-  .about-numbers__block:last-child{
+  .about__numbers+ .about__numbers .about-numbers__block:last-child{
     display: none !important;
   }
   .footer__row{

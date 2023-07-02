@@ -10,7 +10,7 @@ h1,h2,h3,h4{
 body{
   font-family: PT Sans,Helvetica,Arial,sans-serif;
   background-color: #ECECEC;
-  overflow-x:hidden;
+  width: 100%;
 }
 ul{
   padding: 0;
@@ -57,7 +57,32 @@ a{
 }
 @media(max-width:750px){
   .container{
-    max-width: 570px;
+    max-width: none;
+    width: 100%;
+  }
+  .header__inner{
+    flex-direction: column;
+    
+  }
+  .secondheader__inner{
+    flex-direction: column !important;
+  }
+  .menu{
+    display: flex;
+    
+  }
+
+  .dropdown{
+    justify-content: start  !important;
+    margin:0 0 0 12px;
+  }
+  .dropdown__content{
+    margin-top:0 !important;
+  }
+  .menu__list{
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
   }
   .mainsection__videos{
     flex-direction: column !important;
@@ -71,7 +96,13 @@ a{
   .mainsection__column{
     justify-content: center;
   }
-
+  .videos__column:nth-child(1)
+  {
+    padding-left: 10px !important;
+  }
+  .characteristics span{
+    font-size:32px !important;
+  }
   .about__numbers{
     flex-direction: column;
     margin-top: 0 !important;
@@ -79,6 +110,11 @@ a{
   .about-numbers__block:last-child{
     display: none !important;
   }
+  .footer__row{
+    flex-direction: column;
+
+  }
+  
  
 }
 .menu__item :hover{
@@ -118,13 +154,14 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  
 }
 
 .dropdown__inner .dropbtn{
   border:none;
   background-color: inherit;
   color:white;
+  cursor: pointer;
   
 }
 

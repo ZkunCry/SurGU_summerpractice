@@ -68,6 +68,18 @@ a{
   .assembly__pc{
     text-align: center;
   }
+  .mainsection__column{
+    justify-content: center;
+  }
+
+  .about__numbers{
+    flex-direction: column;
+    margin-top: 0 !important;
+  }
+  .about-numbers__block:last-child{
+    display: none !important;
+  }
+ 
 }
 .menu__item :hover{
   background-color: white;
@@ -115,6 +127,7 @@ a{
   color:white;
   
 }
+
 .dropdown::after{
   margin-left:0.255em;
   content:"";
@@ -125,11 +138,15 @@ a{
   border-left:0.3em  solid transparent;
 }
 .dropdown__content{
-  display: none;
   position: absolute;
   margin-top: 0.320rem;
   min-width: 150px;
   z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition-delay: 0.2s;
+ 
 }
 .dropdown__content a{
   float:none;
@@ -137,7 +154,7 @@ a{
   text-align: left;
   padding: 0.5rem 1rem;
   background-color: #dd513a;
-  transition: all  ease;
+  
 }
 .dropdown__content a:hover{
   background-color: white;
@@ -145,9 +162,9 @@ a{
 
 }
 
-.dropdown:hover .dropdown__content{
-  display: block;
-
+.dropdown .dropdown__inner:hover .dropdown__content{
+  opacity: 1; 
+  visibility: visible;
 }
 .secondheader__inner{
   flex-direction: row;

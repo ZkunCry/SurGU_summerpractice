@@ -7,10 +7,15 @@
 h1,h2,h3,h4{
   margin: 0;
 }
+html{
+  overflow-x: hidden;
+  width: 100%;
+}
 body{
   font-family: PT Sans,Helvetica,Arial,sans-serif;
   background-color: #ECECEC;
   width: 100%;
+  overflow-x:hidden;
 }
 ul{
   padding: 0;

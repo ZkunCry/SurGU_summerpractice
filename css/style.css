@@ -17,6 +17,11 @@ body{
   width: 100%;
   overflow-x:hidden;
 }
+:root{
+  --main-color:#dd513a;
+  --button-color:#b34330;
+  --computer-back-col:radial-gradient(circle,  #A60100 0%, var(--main-color) 150%);
+}
 ul{
   padding: 0;
   margin: 0;
@@ -127,7 +132,7 @@ a{
   width: 100%;
 }
 .menu__item:hover > .menu__link{
-  color:#dd513a;
+  color:var(--main-color);
 }
 .menu__link{
   white-space: nowrap;
@@ -136,7 +141,7 @@ a{
 }
 
 .header__row{
-  background-color: #dd513a;
+  background-color: var(--main-color);
 }
 .header__inner{
   display: flex;
@@ -195,12 +200,12 @@ a{
   display: block;
   text-align: left;
   padding: 0.5rem 1rem;
-  background-color: #dd513a;
+  background-color: var(--main-color);
   
 }
 .dropdown__content a:hover{
   background-color: white;
-  color:#dd513a;
+  color:var(--main-color);
 
 }
 
@@ -239,17 +244,17 @@ a{
 .logo__link{
   font-size:40px;
   margin-left:1rem;
-  color:#dd513a;
+  color:var(--main-color);
 }
 .button{
   display: inline-block;
   padding: 10px 25px;
   border-radius: 7px;
-  background-color: #dd513a;
+  background-color: var(--main-color);
   transition: all 0.5s ease;
 }
 .button:hover{
-  background-color: #b34330;
+  background-color: var(--button-color);
 }
 .services__entry{
   display: flex;
@@ -261,10 +266,10 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #dd513a;
+  color: var(--main-color);
 }
 .fill__entry{
-  fill:#dd513a;
+  fill:var(--main-color);
 }
 .services__entry a+a{
   margin-left: 16px;
@@ -273,7 +278,7 @@ a{
 
 /*First Section*/
 .computer{
-  background: radial-gradient(circle,  #A60100 0%, #dd513a 150%);
+  background: var(--computer-back-col);
   display: flex;
   flex-direction: column;
  
@@ -453,7 +458,7 @@ a{
  
 }
 .mainsection__head{
-  color: #dd513a;
+  color: var(--main-color);
   font-weight: 800;
   margin-bottom: 10px;
   font-size:2.5rem;
@@ -486,7 +491,7 @@ a{
 }
 .aboutus__column h1{
   font-size:40px;
-  color:#dd513a;
+  color:var(--main-color);
   font-weight: 800;
   margin-bottom:16px;
 }
@@ -522,12 +527,12 @@ a{
 .aboutus__assembly{
   color:#7E2323;
 }
-.abouts__assembly-now{
+.aboutus__assembly-now{
   color: #7cddb5;
 }
 .button__about {
   width: 200px;
-  background-color: #dd513a;
+  background-color: var(--main-color);
   text-align: center;
   padding: 1rem ;
   border-radius: 0 20px 20px;
@@ -546,7 +551,7 @@ a{
   flex-direction: column;
 }
 .mainsection-column__header h1{
-  color: #dd513a;
+  color: var(--main-color);
   font-weight: 800;
   font-size: 40px;
   margin-bottom: 16px;
@@ -576,7 +581,7 @@ a{
   border-radius: 50%;
   min-width: 50px;
   height: 50px;
-  background-color: #dd513a;
+  background-color: var(--main-color);
   align-items: center;
   justify-content: center;
   font-size: 28px;
@@ -585,7 +590,7 @@ a{
 }
 
 .footer{
-  background-color: #dd513a;
+  background-color: var(--main-color);
   color:#fff;
 
 }
@@ -639,7 +644,7 @@ a{
 }
 .list__link:hover{
   background-color: #fff;
-  color:#dd513a;
+  color:var(--main-color);
 }
 .list__img + .list__img{
   margin-left:5px;

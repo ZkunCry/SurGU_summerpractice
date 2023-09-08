@@ -1,3 +1,5 @@
+@import url(/css/progress.css);
+
 *,
 ::before,
 ::after {
@@ -108,7 +110,7 @@ a {
     position: fixed;
     justify-content: center;
     background-color: var(--main-color);
-    z-index: 99;
+    z-index: 140;
     left: -60%;
     top: 0;
     padding-top: 5rem;
@@ -270,7 +272,7 @@ a {
   outline: none;
   cursor: pointer;
   width: 40px;
-  z-index: 100;
+  z-index: 150;
   height: 40px;
   background-color: transparent;
 }
@@ -385,6 +387,7 @@ a {
 
   color: var(--main-color);
 }
+
 .fill__entry {
   fill: var(--main-color);
 }

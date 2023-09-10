@@ -1,32 +1,24 @@
 const options = {
-  title: `<span>Модальние окно</span>
-  <i class="fa fa-times close" aria-hidden="true"></i>`,
+  title: `<h2>Вход</h2>`,
   closable: true,
-  content: `<p>
-  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-  Asperiores at iusto ducimus quibusdam facere consequatur impedit
-  quaerat repudiandae, doloremque optio, quas blanditiis maxime
-  debitis nobis veritatis itaque cupiditate excepturi mollitia
-  dolorum deleniti aliquid illum corporis saepe? Aspernatur officiis
-  animi nam aperiam 
-  </p>`,
+  content: `<div class="registration-cssave">
+  <form>
+     
+      <div class="form-group">
+          <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин" required>
+      </div>
+      <div class="form-group">
+          <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Пароль" required>
+      </div>
+      <div class="form-group">
+          <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+          <button class="btn btn-primary btn-block create-account" type="submit">Войти</button>
+      </div>
+  </form>
+</div>`,
   width: `500px`,
-  footer: [
-    {
-      text: "OK",
-      type: "primary",
-      handler() {
-        console.log(`${this.type} button clicked`);
-      },
-    },
-    {
-      text: "CANCEL",
-      type: "primary",
-      handler() {
-        console.log(`${this.type} button clicked`);
-      },
-    },
-  ],
 };
 
 const modal = $.modal(options);

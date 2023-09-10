@@ -22,11 +22,11 @@ function template(options) {
   modal.insertAdjacentHTML(
     "afterbegin",
     `<div class="modal-body">
-      <div class="modal-content style =${
-        modal.options.maxWidth || DEAFULT_WIDTH
+      <div class="modal-content" style ="width:${
+        modal.options.width || DEAFULT_WIDTH
       }">
         <div class="modal-header">
-          <span>Модальние окно</span>
+          ${modal.options.title}
           ${
             modal.options.closable
               ? `<i class="fa fa-times close" data-close="true" aria-hidden="true"></i>`

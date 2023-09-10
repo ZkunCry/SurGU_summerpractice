@@ -14,7 +14,12 @@
   top: 0;
   width: 0;
   height: 100%;
-  background-color: blueviolet;
+  background: linear-gradient(
+    to right,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50vw,
+    #dd513a 100vw
+  );
 }
 .none {
   display: none;

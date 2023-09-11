@@ -1,5 +1,4 @@
 const secondHeader = document.querySelector(".secondheader");
-const headerBurgerBtn = document.querySelector(".header__burger-btn");
 const header = document.querySelector(".header");
 const burgerBody = document.querySelector(".burger-body");
 const computerSection = document.querySelector(".computer");

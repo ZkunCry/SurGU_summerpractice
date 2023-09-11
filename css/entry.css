@@ -23,9 +23,9 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  background-color: #c0412a;
   border: none;
-  color: white;
+  outline: none;
+  color: #fff;
   margin-top: 20px;
 }
 .form-group {

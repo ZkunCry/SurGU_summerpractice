@@ -1,15 +1,10 @@
-function _createButton(buttons = []) {
-  const $buttons = document.createElement("div");
-  $buttons.classList.add("modal-footer");
-  buttons.forEach((btn) => {
-    const tempBtn = document.createElement("button");
-    tempBtn.textContent = btn.text;
-    tempBtn.classList = `btn btn-${btn.type}`;
-    tempBtn.onclick = btn.handler || function () {};
-    $buttons.appendChild(tempBtn);
-  });
+function _createTemplate(elements = {}) {
+  console.log("work");
+  const $modalFooter = document.createElement("div");
+  $modalFooter.classList.add("modal-footer");
+  $modalFooter.insertAdjacentHTML("afterbegin", elements);
 
-  return $buttons;
+  return $modalFooter;
 }
 
 function template(options) {
@@ -22,14 +17,14 @@ function template(options) {
   modal.insertAdjacentHTML(
     "afterbegin",
     `<div class="modal-body">
-      <div class="modal-content" style ="width:${
+      <div class="modal-content" style ="max-width:${
         modal.options.width || DEAFULT_WIDTH
       }">
         <div class="modal-header">
           ${modal.options.title}
           ${
             modal.options.closable
-              ? `<i class="fa fa-times close" data-close="true" aria-hidden="true"></i>`
+              ? `<i class="fa fa-times close" data-close="true" aria-hidden="true" style="font-size:26px;cursor:pointer;"></i>`
               : ``
           }
         </div>
@@ -40,7 +35,7 @@ function template(options) {
       </div>
     </div>`
   );
-  modal.querySelector(".modal-inner").after(_createButton(options.footer));
+  modal.querySelector(".modal-inner").after(_createTemplate(options.footer));
   document.body.appendChild(modal);
   return modal;
 }
@@ -48,14 +43,24 @@ function template(options) {
 $.modal = function (options) {
   let modalWindow = template(options);
   let destroyed = false;
+  let closing = false;
   const modal = {
     open() {
       if (destroyed) console.log("Modal window has been destroyed");
-      modalWindow.classList.add("active");
+      !closing && modalWindow.classList.add("active");
     },
 
     close() {
+      closing = true;
       if (destroyed) console.log("Modal window has been destroyed");
+      modalWindow.classList.remove("active");
+      modalWindow.classList.add("hide");
+
+      setTimeout(() => {
+        modalWindow.classList.remove("hide");
+
+        closing = false;
+      }, 200);
       modalWindow.classList.remove("active");
     },
   };

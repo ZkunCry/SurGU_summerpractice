@@ -14,11 +14,12 @@ const options = {
           <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
       </div>
       <div class="form-group">
-          <button class="btn btn-primary btn-block create-account" type="submit">Войти</button>
+          <button class="button create-account" type="submit">Войти</button>
       </div>
   </form>
 </div>`,
   width: `500px`,
+  footer: `<span>Еще не с нами? <a class="registration">Зарегистрируйтесь!</a></span>`,
 };
 
 const modal = $.modal(options);

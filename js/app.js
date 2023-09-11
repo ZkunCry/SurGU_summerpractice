@@ -5,16 +5,27 @@ const burgerBody = document.querySelector(".burger-body");
 const computerSection = document.querySelector(".computer");
 const line = document.querySelector(".progress-line__item");
 
+const dropDown = document.querySelector("dropdown");
+
+const headerEvent = (event) => {
+  event.preventDefault();
+  const { target } = event;
+  if (target.closest(".dropdown__link")) {
+    const dropBtn = document.querySelector(".dropbtn");
+    dropBtn.innerText = target.innerText;
+  } else if (target.closest(".header__burger-btn")) {
+    header.classList.toggle("open")
+      ? document.body.classList.add("hidden")
+      : document.body.classList.remove("hidden");
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   burgerBody.addEventListener("click", () => {
     header.classList.remove("open");
     document.body.classList.toggle("hidden");
   });
-  headerBurgerBtn.addEventListener("click", () => {
-    header.classList.toggle("open")
-      ? document.body.classList.add("hidden")
-      : document.body.classList.remove("hidden");
-  });
+  header.addEventListener("click", headerEvent);
 
   const fixedHeader = () => {
     const visible = window.getComputedStyle(secondHeader).display;

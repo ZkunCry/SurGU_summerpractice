@@ -35,6 +35,10 @@
 .form-group input {
   width: 90%;
 }
+.loginForm{
+  color:black !important;
+  cursor: pointer;
+}
 @media (max-width: 576px) {
   .registration-cssave form {
     padding: 50px 20px;

@@ -78,7 +78,13 @@ $.modal = function (options) {
       destroyed = true;
     },
     setContent(html) {
-      modalWindow.querySelector(".modal-inner").innerHTML = html;
+      modalWindow.querySelector(".modal-inner").innerHTML = html ;
+    },
+    setTitle(html) {
+      modalWindow.querySelector(".modal-header").innerHTML = options.closable? html +`<i class="fa fa-times close" data-close="true" aria-hidden="true" style="font-size:26px;cursor:pointer;"></i>` : html;
+    },
+    setFooter(html) {
+      modalWindow.querySelector(".modal-footer").innerHTML = html;
     },
   });
 };

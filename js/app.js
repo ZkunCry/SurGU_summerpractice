@@ -4,6 +4,7 @@ const burgerBody = document.querySelector(".burger-body");
 const computerSection = document.querySelector(".computer");
 const line = document.querySelector(".progress-line__item");
 
+
 const dropDown = document.querySelector("dropdown");
 
 const headerEvent = (event) => {
@@ -25,7 +26,37 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("hidden");
   });
   header.addEventListener("click", headerEvent);
-
+  const modalWindow = document.querySelector('.modal-content')
+  modalWindow.addEventListener('click',(event)=>{
+    const {target} = event
+    console.log(target);
+    if(target.closest('.registration'))
+    {
+      modal.close()
+      setTimeout(()=>{
+        modal.setTitle(optionsRegister.title)
+        modal.setContent(optionsRegister.content)
+        modal.setFooter(optionsRegister.footer)
+      },500)
+     
+      setTimeout(()=>{
+        modal.open()
+      },500)
+     
+    }
+    else if(target.closest('.loginForm'))
+    {
+      modal.close()
+      setTimeout(()=>{
+        modal.setTitle(options.title)
+        modal.setContent(options.content)
+        modal.setFooter(options.footer)
+      },500)
+      setTimeout(()=>{
+        modal.open()
+      },500)
+    }
+  })
   const fixedHeader = () => {
     const visible = window.getComputedStyle(secondHeader).display;
     if (visible !== "none") {

@@ -1,4 +1,3 @@
-
 .modal-body {
   display: flex;
   justify-content: center;
@@ -56,8 +55,9 @@
 .modal-footer button:first-child {
   margin-right: 10px;
 }
+.modal .loginForm,
 .registration {
-  color: black;
+  color: black !important;
   cursor: pointer;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }

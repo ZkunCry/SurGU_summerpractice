@@ -1,23 +1,24 @@
-.registration-cssave {
+.authorization-cssave {
   padding: 20px 0;
 }
 
-.registration-cssave form {
+.authorization-cssave form {
   width: 100%;
 }
 
-.registration-cssave form h3 {
+.authorization-cssave form h3 {
   font-weight: bold;
   margin-bottom: 30px;
 }
 
-.registration-cssave .item {
+.authorization-cssave .item {
   border-radius: 10px;
   margin-bottom: 25px;
   padding: 10px 20px;
 }
 
-.registration-cssave .create-account {
+.authorization-cssave .create-account,
+.authorization {
   border-radius: 30px;
   padding: 10px 60px;
   font-size: 18px;
@@ -31,16 +32,14 @@
 .form-group {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .form-group input {
   width: 90%;
 }
-.loginForm{
-  color:black !important;
-  cursor: pointer;
-}
+
 @media (max-width: 576px) {
-  .registration-cssave form {
+  .authorization-cssave form {
     padding: 50px 20px;
   }
 }

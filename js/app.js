@@ -4,8 +4,42 @@ const burgerBody = document.querySelector(".burger-body");
 const computerSection = document.querySelector(".computer");
 const line = document.querySelector(".progress-line__item");
 
-
-
+const fixedHeader = () => {
+  const visible = window.getComputedStyle(secondHeader).display;
+  if (visible !== "none") {
+    const scrollDistance = window.scrollY;
+    if (header.classList.contains("fixed")) {
+      header.classList.remove("fixed");
+      computerSection.style.marginTop = `0px`;
+    }
+    if (scrollDistance > 0) {
+      secondHeader.classList.add("fixed");
+      line.parentNode.classList.remove("none");
+      line.parentNode.style.top = `${header.children[1].offsetHeight}px`;
+    } else {
+      secondHeader.classList.remove("fixed");
+      line.parentNode.classList.add("none");
+    }
+  } else {
+    if (secondHeader.classList.contains("fixed")) {
+      progressAnimation();
+      secondHeader.classList.remove("fixed");
+    }
+    header.classList.add("fixed");
+    line.parentNode.classList.remove("none");
+    line.parentNode.style.top = `${header.offsetHeight}px`;
+    computerSection.style.marginTop = `${header.offsetHeight}px`;
+  }
+};
+const progressAnimation = () => {
+  let scrollTop = window.scrollY;
+  let windowHeight = window.innerHeight;
+  let siteHeight = document.documentElement.scrollHeight;
+  let percentageProgress = Math.floor(
+    (scrollTop / (siteHeight - windowHeight)) * 101
+  );
+  line.style.width = `${percentageProgress}%`;
+};
 const headerEvent = (event) => {
   event.preventDefault();
   const { target } = event;
@@ -18,12 +52,8 @@ const headerEvent = (event) => {
       : document.body.classList.remove("hidden");
   }
 };
-const getData = async () => {
-  const result = await fetch("/test");
-  const js = await result.json();
-};
+
 document.addEventListener("DOMContentLoaded", () => {
-  getData();  
   const dropDown = document.querySelector(".dropdown");
   burgerBody.addEventListener("click", () => {
     header.classList.remove("open");
@@ -32,10 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
   header.addEventListener("click", headerEvent);
   const modalWindow = document.querySelector(".modal-content");
 
-
   modalWindow.addEventListener("click", async (event) => {
     const { target } = event;
-    const {type} = event.target.dataset;
+    const { type } = event.target.dataset;
     if (target.closest(".registration")) {
       modal.close();
       setTimeout(() => {
@@ -46,9 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         modal.open();
-
       }, 500);
-   
     } else if (target.closest(".loginForm")) {
       modal.close();
       setTimeout(() => {
@@ -58,67 +85,58 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500);
       setTimeout(() => {
         modal.open();
-
       }, 500);
-    }
-    else if(type ==="login"){
-      
-    }
-    else if(type ==="registration")
-    {
+    } else if (type === "login") {
+      const { email, password, username } = event.target.closest(".authForm");
       const headers = {
-        'Content-Type': 'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
+      };
+      const response = await fetch("/login", {
+        headers: headers,
+        method: "POST",
+        body: JSON.stringify({
+          email: email.value,
+          login: username.value,
+          password: password.value,
+        }),
+      });
+      if (response.ok) {
+        alert("Success registration!");
+      } else {
+        alert("Error: ", response.json());
       }
-      const response = await fetch("/registration",{
-        headers:headers,
-        method:"POST",
-        body:JSON.stringify({
-          email:'teste223',
-          login:"test232",
-          password:"aaaaad"
-        })
-      })
-      if(response.ok){
-        console.log("Success");
+    } else if (type === "registration") {
+      const { email, password, confirmpassword, username } =
+        event.target.closest(".authForm");
+
+      if (
+        !email.validity.typeMismatch &&
+        !password.validity.typeMismatch &&
+        !confirmpassword.validity.typeMismatch &&
+        !username.validity.typeMismatch
+      ) {
+        const headers = {
+          "Content-Type": "application/json;charset=utf-8",
+        };
+        const response = await fetch("/registration", {
+          headers: headers,
+          method: "POST",
+          body: JSON.stringify({
+            email: email.value,
+            login: username.value,
+            password: password.value,
+          }),
+        });
+        if (response.ok) {
+          alert("Success registration!");
+        } else {
+          alert("Error: ", response.json());
+        }
       }
     }
   });
-  const fixedHeader = () => {
-    const visible = window.getComputedStyle(secondHeader).display;
-    if (visible !== "none") {
-      const scrollDistance = window.scrollY;
-      if (header.classList.contains("fixed")) {
-        header.classList.remove("fixed");
-        computerSection.style.marginTop = `0px`;
-      }
-      if (scrollDistance > 0) {
-        secondHeader.classList.add("fixed");
-        line.parentNode.classList.remove("none");
-        line.parentNode.style.top = `${header.children[1].offsetHeight}px`;
-      } else {
-        secondHeader.classList.remove("fixed");
-        line.parentNode.classList.add("none");
-      }
-    } else {
-      if (secondHeader.classList.contains("fixed")) {
-        progressAnimation();
-        secondHeader.classList.remove("fixed");
-      }
-      header.classList.add("fixed");
-      line.parentNode.classList.remove("none");
-      line.parentNode.style.top = `${header.offsetHeight}px`;
-      computerSection.style.marginTop = `${header.offsetHeight}px`;
-    }
-  };
-  const progressAnimation = () => {
-    let scrollTop = window.scrollY;
-    let windowHeight = window.innerHeight;
-    let siteHeight = document.documentElement.scrollHeight;
-    let percentageProgress = Math.floor(
-      (scrollTop / (siteHeight - windowHeight)) * 101
-    );
-    line.style.width = `${percentageProgress}%`;
-  };
+  fixedHeader();
+  progressAnimation();
   window.addEventListener("scroll", () => {
     progressAnimation();
     fixedHeader();

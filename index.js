@@ -3,12 +3,12 @@ const crypto = require("crypto");
 const mysql = require("mysql");
 const path = require("path");
 const PORT = 5000;
-
+require('dotenv').config()
 const connectionDB = mysql.createConnection({
-  host: "92.246.214.15",
-  user: "ais_aksentev1933_happypc",
-  password: "JYycNjZFRTlbMq6hEAwNHcxJ",
-  database: "ais_aksentev1933_happypc",
+  host:process.env.HOST,
+  user:process.env.USER,
+  password:process.env.PASSWORD,
+  database:process.env.DATABASE
 });
 
 const app = express();
@@ -18,7 +18,6 @@ app.use("/js", express.static(path.join(__dirname, "js")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
-  // res.status(200).json("Server worked");
 });
 
 app.get("/test", (req, res) => {

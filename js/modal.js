@@ -1,3 +1,4 @@
+
 function _createTemplate(elements = {}) {
   console.log("work");
   const $modalFooter = document.createElement("div");
@@ -37,6 +38,7 @@ function template(options) {
   );
   modal.querySelector(".modal-inner").after(_createTemplate(options.footer));
   document.body.appendChild(modal);
+  
   return modal;
 }
 
@@ -70,7 +72,7 @@ $.modal = function (options) {
     }
   }
   modalWindow.addEventListener("click", listener);
-
+  
   return Object.assign(modal, {
     destroy() {
       modalWindow.parentNode.removeChild(modalWindow);
@@ -78,7 +80,8 @@ $.modal = function (options) {
       destroyed = true;
     },
     setContent(html) {
-      modalWindow.querySelector(".modal-inner").innerHTML = html ;
+      modalWindow.querySelector(".modal-inner").innerHTML = html;
+
     },
     setTitle(html) {
       modalWindow.querySelector(".modal-header").innerHTML = options.closable? html +`<i class="fa fa-times close" data-close="true" aria-hidden="true" style="font-size:26px;cursor:pointer;"></i>` : html;

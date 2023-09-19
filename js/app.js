@@ -4,7 +4,7 @@ const burgerBody = document.querySelector(".burger-body");
 const computerSection = document.querySelector(".computer");
 const line = document.querySelector(".progress-line__item");
 
-const dropDown = document.querySelector("dropdown");
+
 
 const headerEvent = (event) => {
   event.preventDefault();
@@ -21,19 +21,21 @@ const headerEvent = (event) => {
 const getData = async () => {
   const result = await fetch("/test");
   const js = await result.json();
-  console.log(js);
 };
 document.addEventListener("DOMContentLoaded", () => {
-  getData();
-
+  getData();  
+  const dropDown = document.querySelector(".dropdown");
   burgerBody.addEventListener("click", () => {
     header.classList.remove("open");
     document.body.classList.toggle("hidden");
   });
   header.addEventListener("click", headerEvent);
   const modalWindow = document.querySelector(".modal-content");
-  modalWindow.addEventListener("click", (event) => {
+
+
+  modalWindow.addEventListener("click", async (event) => {
     const { target } = event;
+    const {type} = event.target.dataset;
     if (target.closest(".registration")) {
       modal.close();
       setTimeout(() => {
@@ -44,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         modal.open();
+
       }, 500);
+   
     } else if (target.closest(".loginForm")) {
       modal.close();
       setTimeout(() => {
@@ -54,7 +58,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500);
       setTimeout(() => {
         modal.open();
+
       }, 500);
+    }
+    else if(type ==="login"){
+      
+    }
+    else if(type ==="registration")
+    {
+      const headers = {
+        'Content-Type': 'application/json;charset=utf-8'
+      }
+      const response = await fetch("/registration",{
+        headers:headers,
+        method:"POST",
+        body:JSON.stringify({
+          email:'teste223',
+          login:"test232",
+          password:"aaaaad"
+        })
+      })
+      if(response.ok){
+        console.log("Success");
+      }
     }
   });
   const fixedHeader = () => {

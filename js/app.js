@@ -52,15 +52,35 @@ const headerEvent = (event) => {
       : document.body.classList.remove("hidden");
   }
 };
-
+const deleteCookies = () => {
+  let cookies = document.cookie.split(";");
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf("=");
+    var name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    document.cookie =
+      name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  }
+};
+const dropDownServicesEvent = (event) => {
+  const { type } = event.target.dataset;
+  if (type === "quit") {
+    deleteCookies();
+    location.reload();
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
+  const dropDownServices = document.querySelector(".services__dropdown");
+  const modalWindow = document.querySelector(".modal-content");
   const dropDown = document.querySelector(".dropdown");
+
   burgerBody.addEventListener("click", () => {
     header.classList.remove("open");
     document.body.classList.toggle("hidden");
   });
   header.addEventListener("click", headerEvent);
-  const modalWindow = document.querySelector(".modal-content");
+  dropDownServices?.addEventListener("click", dropDownServicesEvent);
 
   modalWindow.addEventListener("click", async (event) => {
     const { target } = event;
@@ -101,9 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
       if (response.ok) {
-        console.log(response.text());
-
-        alert(response.text());
+        location.reload();
       } else {
         response.text().then((value) => alert(value));
       }
@@ -131,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         if (response.ok) {
           alert("Success registration!");
+          location.reload();
         } else {
           alert("Error: ", response.json());
         }

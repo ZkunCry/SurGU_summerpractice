@@ -32,8 +32,13 @@ app.use(
     extended: true,
   })
 );
+app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  console.log(req.cookies);
+  res.render("index", {
+    login: req.cookies.login,
+  });
+  // res.sendFile(path.join(__dirname, "index.html"));
 });
 app.post("/registration", (req, res) => {
   const { email, login, password } = req.body;
@@ -42,7 +47,6 @@ app.post("/registration", (req, res) => {
   connectionDB.query(
     `SELECT * FROM user WHERE email LIKE BINARY '${email}' OR login LIKE BINARY '${login}'`,
     (error, results, fields) => {
-      console.log(results.length);
       if (error) throw error;
       if (results.length > 0) {
         res.sendStatus(400).send("User is already exist");
@@ -51,17 +55,32 @@ app.post("/registration", (req, res) => {
       connectionDB.query(
         `INSERT INTO user (email, login, password) VALUES ('${email}', '${login}', '${hash}')`,
         (error, results, fields) => {
+          console.log(`Results: ${results}`);
           if (error) throw error;
-          const randomNum = crypto
-            .createHash("sha256")
-            .update(req.body.password + req.body.email)
-            .digest("hex");
-          res.cookie("cookie", randomNum, { maxAge: 90000, httpOnly: true });
-          res.cookie("id", results[0].id);
-          res.cookie("login", results[0].login);
-          res.status(200).send("Success registration");
+          if (results) {
+            connectionDB.query(
+              `SELECT * FROM user WHERE email LIKE BINARY '${email}' AND login LIKE BINARY '${login}'`,
+              (error, results, fields) => {
+                const randomNum = crypto
+                  .createHash("sha256")
+                  .update(req.body.password + req.body.email)
+                  .digest("hex");
+                console.log(results);
+                res.cookie("cookie", randomNum, {
+                  maxAge: 90000,
+                  httpOnly: true,
+                });
+                res.cookie("id", results[0].id);
+                res.cookie("login", results[0].login);
+                res.status(200).send("Success registration");
+                return;
+              }
+            );
+          }
+          return;
         }
       );
+      return;
     }
   );
 });
@@ -72,10 +91,18 @@ app.post("/login", (req, res) => {
   connectionDB.query(
     `SELECT * FROM user WHERE email LIKE BINARY '${email}' AND login LIKE BINARY '${login}' AND password LIKE BINARY '${hash}'`,
     (error, results, fields) => {
-      console.log(results.id);
+      console.log(`Login result : ${results}`);
       if (error) throw error;
-      if (results.length > 0) res.status(200).send("Success login");
-      else {
+      if (results.length > 0) {
+        const randomNum = crypto
+          .createHash("sha256")
+          .update(req.body.password + req.body.email)
+          .digest("hex");
+        res.cookie("cookie", randomNum, { maxAge: 90000, httpOnly: true });
+        res.cookie("id", results[0].id);
+        res.cookie("login", results[0].login);
+        res.status(200).send("Success login");
+      } else {
         res.status(400).send("User is not exist");
         return;
       }

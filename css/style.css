@@ -402,7 +402,50 @@ a {
 
   color: var(--main-color);
 }
+.services__inner.account {
+  flex-direction: row !important;
+  gap: 3px;
+  align-items: start;
+  background-color: var(--main-color);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+.arrow {
+  transition: transform 0.5s;
+}
+.services__dropdown {
+  position: relative;
+}
+.hide {
+  visibility: hidden;
+  transform: translateY(-500%);
+  transition: 0.5s visibility, 0.5s transform;
+}
+.dropdown-child {
+  position: absolute;
+  text-align: center;
+  font-size: calc(100% - 10%);
+  top: 150%;
+  left: -4px;
+  width: 115%;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100px;
+  transition: 0.5s visibility, 0.5s transform;
+}
 
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 1rem 0.5rem;
+}
+.services__inner.account .arrow.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
 .fill__entry {
   fill: var(--main-color);
 }

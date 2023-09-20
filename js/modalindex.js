@@ -50,9 +50,9 @@ const optionsRegister = {
   footer: `<span> <a class="loginForm">Вернуться к авторизации</a></span>`,
 };
 const modal = $.modal(options);
-
-const login = document.querySelector(".login");
-login.addEventListener("click", (event) => {
+const loginOpen = (event) => {
   event.preventDefault();
   modal.open();
-});
+};
+const login = document.querySelector(".login");
+login.addEventListener("click", loginOpen);

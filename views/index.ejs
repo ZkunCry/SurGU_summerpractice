@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/progress.css">
+  <link rel="stylesheet" href="./css/entry.css">
+
+  <script src="https://kit.fontawesome.com/4656f54c87.js" crossorigin="anonymous"></script>
+  <title>Компьютерная мастерская HappyPC</title>
+</head>
+<body>
+  <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+  <div class="progress-line">
+    <div class="progress-line__item"></div>
+  </div>
+  <header class="header">
+    <div class="header__row">
+      <div class="container">
+          <div class="header__inner">
+            <div class="burger-body" id="burger-body"></div>
+            <button class="header__burger-btn">
+              <span></span> 
+              <span></span> 
+              <span></span>
+            </button>
+          <nav class="menu">
+              <ul class="menu__list">
+                <li class="menu__item"><a class="menu__link" href="">Услуги</a></li>
+                <li class="menu__item"><a class="menu__link" href="">Портфолио</a></li>
+                <li class="menu__item"><a class="menu__link" href="">О нас</a></li>
+                <li class="menu__item"><a class="menu__link" href="">FAQ</a></li>
+                <li class="menu__item"><a class="menu__link" href="">Контакты</a></li>
+                <li class="menu__item"><a class="menu__link" href=""> Форум</a></li>
+                <li class="menu__item"><a class="menu__link" href="">Серверы</a></li>
+              </ul>
+          </nav>
+          <div class="dropdown">
+            <div class="dropdown__inner">
+              <span class="dropbtn">Выбор города</span>
+                <div class="dropdown__content">
+                  <a class ="dropdown__link" href="">Воронеж</a>
+                  <a class ="dropdown__link" href="">Санкт-Петербург</a>
+                  <a class ="dropdown__link" href="">Белгород</a>
+                </div>
+            </div>
+          
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class = "secondheader">
+      <div class="secondheader__inner container">
+            <div class="logo">
+              <a href="/index.html">
+                <img class="logo__img" src="./images/happypc-logo.webp" alt="#">
+                <a class="logo__link" href="">HappyPC</a>
+              </a>
+            </div>
+          <div class="infromation__block">
+            <a style="color: black;" href="">Новый офис компьютерной мастерской <span style="color: #dd513a; font-weight: bold;" >HappyPC</span>  в Воронеже адрес  Московский проспект, 6</a>
+            <a style="color: #dd513a;" href="">Заказать сборку, ремонт, обслуживание игровых: пк, ноутбуков и видеокарт</a>
+          </div>
+          <a class="button button-block" href="">
+            
+            <div class="line-container">
+              <div class="menu-icon-wrapper">
+                <div class="menu-icon-line first"></div>
+                <div class="menu-icon-line second"></div>
+                <div class="menu-icon-line third"></div>
+
+              </div>
+            </div>
+            <span>
+              Каталог
+            </span>
+          </a>
+          <div class="services__entry">
+            <a class="services__inner" href="">
+              <img width="30" height="30" src="./images/instruments.png" alt="#">
+              <span>Услуги</span>
+            </a>
+            <% if(login){%>
+              <a class="services__inner account" href="">
+                <div class="services__dropdown">
+                  <span class="dropdownbtn"><%= login %> </span>
+                  <i class="fa-solid fa-angle-up arrow"></i>
+                  <div class="dropdown-child">
+                    <span class="dropdown-item">Аккаунт</span>
+                    <span class="dropdown-item" data-type="quit">Выйти</span>
+                  </div>
+                </div>        
+              </a>
+            <%} else{%>
+            <a class="services__inner login" href="">
+                <svg version="1.1" id="Capa_1" xmlns="https://www.w3.org/2000/svg" width="30" height="30" xmlns:xlink="https://www.w3.org/1999/xlink" 
+                      x="0px" y="0px" 
+                      viewBox="0 0 499.1 499.1" 
+                      style="enable-background:new 0 0 499.1 499.1;" 
+                      xml:space="preserve">
+                <path class="fill__entry" d="M0,249.6c0,9.5,7.7,17.2,17.2,17.2h327.6l-63.9,63.8c-6.7,6.7-6.7,17.6,0,24.3c3.3,3.3,7.7,5,12.1,5s8.8-1.7,12.1-5
+                            l93.1-93.1c6.7-6.7,6.7-17.6,0-24.3l-93.1-93.1c-6.7-6.7-17.6-6.7-24.3,0c-6.7,6.7-6.7,17.6,0,24.3l63.8,63.8H17.2
+                            C7.7,232.5,0,240.1,0,249.6z"></path>
+                <path class="fill__entry" d="M396.4,494.2c56.7,0,102.7-46.1,102.7-102.8V107.7C499.1,51,453,4.9,396.4,4.9H112.7C56,4.9,10,51,10,107.7V166
+                            c0,9.5,7.7,17.1,17.1,17.1c9.5,0,17.2-7.7,17.2-17.1v-58.3c0-37.7,30.7-68.5,68.4-68.5h283.7c37.7,0,68.4,30.7,68.4,68.5v283.7
+                            c0,37.7-30.7,68.5-68.4,68.5H112.7c-37.7,0-68.4-30.7-68.4-68.5v-57.6c0-9.5-7.7-17.2-17.2-17.2S10,324.3,10,333.8v57.6
+                            c0,56.7,46.1,102.8,102.7,102.8H396.4L396.4,494.2z"></path>
+          </svg>
+          <span>Вход</span>
+          <%} %>
+        </a>
+ 
+      
+    </div>
+  </header>
+
+
+  <section class="computer">
+    <div class="container">
+      <div class="computer-section__inner">
+        <div class="assembly__pc">
+            <h1 class="assemblypc__text" >Сборка игровых ПК</h1>
+            <span class="assebmlypc__budget">Минимальный бюджет от 50000Р</span>
+            <a href="" class="assebmlypc__orderpc button">
+              Заказать сборку
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+            </a>
+        </div>
+        <div class="computer-section__img">
+          <img src="./images/pcsborka.webp" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="slider">
+    </div>
+
+  </section>
+  <section class="mainsection">
+    <div class="container">
+      <section class="mainsection__column">
+            <div class="mainsection__container-1">
+            <h1 class="mainsection__head">HAPPYPC - сборка счастливых ПК на заказ!</h1>
+            <p class="mainsection__text">Наш сборщик Никита поможет подобрать комплектацию игрового ПК и проверит комплектующие на совместимость. 
+              А также мы собираем счастливые компьютеры для игр под заказ и доставляем по всей России.</p>
+              <div class="mainsection__videos">
+                <div class="videos__column">
+                  <iframe  width="100%" height="315px" src="https://www.youtube.com/embed/kYosxnLw2T8" 
+                  title="YouTube video player" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                </iframe>
+                </div>
+                <div class="videos__column">
+                  <iframe width="100%" height="315px" 
+                  src="https://www.youtube.com/embed/BkjSYITrjd4" 
+                  title="YouTube video player" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+                </iframe>
+              </div>
+                <div class="videos__column">
+                  <iframe width="100%" height="315px"
+                  src="https://www.youtube.com/embed/GuGOBKv8-ws" 
+                  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+                </iframe>
+              </div>
+              </div>
+            </div>
+      </section>
+      <section class="mainsection__column">
+        <div class="mainsection__container-2">
+        <div class="aboutus__column">
+            <h1 >О нас</h1>
+            <p >В ноябре 2018 года, мы вместе с моим лучшим другом Иваном сняли офис и начали взрослую предпринимательскую деятельность. 
+              Сейчас наша команда состоит из 7 человек.
+             <p > Цель нашей команды, — сделать быстрый, качественный и 
+              недорогой ремонт компьютеров и ноутбуков. 
+              Для этого мы закупаем самое лучшее оборудование, учимся и развиваемся. 
+              Оптимизируем рабочие процессы и все это показываем Вам. 
+              Мы хотим максимально положительно повлиять на сферу услуг в нашей нише и показать, что иметь честный, добрый и позитивный сервис — это настоящее счастье!)))
+            </p>
+            </p>
+            <ul class="aboutus__list">
+              <li class="aboutus__item">
+                <div class="characteristics">
+                   <span class="aboutus__clients">4000</span> 
+                </div>
+                <span class="aboutus__text">ДОВОЛЬНЫХ КЛИЕНТОВ</span>
+            </li >
+              <li class="aboutus__item">
+                <div class="characteristics">
+                  <span class="aboutus__assembly">150+</span> 
+                </div>
+                <span class = "aboutus__text" >СОБРАНО СБОРОК</span> 
+              </li>
+              <li class="aboutus__item">
+                <div class="characteristics">
+                  <span class="aboutus__assembly-now">15+</span> 
+                </div>
+                <span class = "aboutus__text" >СОБИРАЕМ СЕЙЧАС</span> 
+              </li>
+            </ul>
+            <a href="" class="button__about">Узнать больше</a>
+          </div>
+        <div class="block aboutus__column">
+          <img class="aboutus__img" src="./images/about.webp" alt="#">
+        </div>
+        
+      </div>
+      </section>
+      <section class="mainsection__column">
+        <div class="mainsection__container-1">
+          <div class="mainsection-column__header">
+            <h1>Этапы работ</h1>
+            <span>Все этапы для взаимовыгодного и продуктивного сотрудничества</span>
+          </div>
+          <div class="mainsection-column__about">
+            <div class="about__numbers">
+              <div class="about-numbers__block">
+                <span class="circle__block" >1</span>
+                <span style="padding-left:1rem;">Оставьте заявку на сайте или позвоните нам.</span>
+              </div>
+              <div class="about-numbers__block">
+                <span class="circle__block" >2</span>
+                <span style="padding-left:1rem;">Подробное обсуждение выполнения сборки и подбора комплектующих.</span>
+              </div>
+              <div class="about-numbers__block">
+                <span class="circle__block" >3</span>
+                <span style="padding-left:1rem;">Закупка комплектующих для вашего счастливого компьютера.</span>
+              </div>
+            </div>
+            <div class="about__numbers">
+              
+              <div class="about-numbers__block">
+                <span class="circle__block" >4</span>
+                <span style="padding-left:1rem;">Проверка комплектующих на совместимость, все необходимые тесты.</span>
+              </div>
+          
+            
+              <div class="about-numbers__block">
+                <span class="circle__block" >5</span>
+                <span style="padding-left:1rem;">Фото и видео отчет о выполненной работе. Отправка вашего ПК.</span>
+              </div>
+              <div style="visibility: hidden;" class="about-numbers__block">
+                <span class="circle__block" >5</span>
+                <span style="padding-left:1rem;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__row">
+          <div style="visibility: hidden;" class="row__column">
+            <span class="row__text">Меню</span>
+            <div class="row__list">
+              <div class="list__items"><a href="">О нас</a></div>
+              <div class="list__items"><a href="">Портфолио</a></div>
+              <div class="list__items"><a href="">FAQ</a></div>
+              
+            </div>
+          </div> 
+          <div class="row__column">
+            <span class="row__text">Меню</span>
+            <div class="row__list">
+              <div class="list__items"><a class="list__link" href="">О нас</a></div>
+              <div class="list__items"><a class="list__link" href="">Портфолио</a></div>
+              <div class="list__items"><a class="list__link" href="">FAQ</a></div>
+              <div class="list__items">
+                <div class="list__img">
+                  <a href="">
+                    <img src="./images/vk.webp" alt="">
+                  </a>
+                </div>
+                <div class="list__img">
+                  <a href="">
+                    <img src="./images/telegram-.webp" alt="">
+                  </a>
+                </div>
+                <div class="list__img">
+                  <a href="">
+                    <img src="./images/discord.webp" alt="">
+                  </a>
+                </div>
+                <div class="list__img">
+                  <a href="">
+                    <img src="./images/yandex.webp" alt="">
+                  </a>
+                </div>
+                <div class="list__img">
+                  <a href="">
+                    <img src="./images/youtube.webp" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="row__column">
+            <span class="row__text">Услуги</span>
+            <div class="row__list">
+              <div class="list__items"><a class="list__link" href="">Сборка компьютера</a></div>
+              <div class="list__items"><a class="list__link" href="">Апргрейд компьютера</a></div>
+              <div class="list__items"><a class="list__link" href="">Подборка комплектующих</a></div>
+              <div class="list__items"><a class="list__link" href="">Ремонт компьютера</a></div>
+              <div class="list__items"><a class="list__link" href="">Заказать сборку</a></div>
+            </div>
+          </div> 
+          <div class="row__column">
+            <span class="row__text">YouTube Каналы</span>
+            <div class="row__list">
+              <div class="list__items"><a style="font-size:1.2rem;" class="list__link" href="https://www.youtube.com/c/DaniilGerasimov/videos">Danil Gerasimov</a></div>
+              <div class="list__items"><a style="font-size:1.2rem;" class="list__link" href="https://www.youtube.com/channel/UC-NMsRPkoyhXDhyWd63oZSg/featured">HappyPC РЕМОНТ</a></div>
+              <div class="list__items"><a style="font-size:1.2rem;" class="list__link" href="https://www.youtube.com/channel/UCjGdwnnMBOCvjCEEpxtqUwg/featured">HappyPC ПРО СБОРКИ и ЖЕЛЕЗО</a></div>
+              <div class="list__items"><a style="font-size:1.2rem;" class="list__link" href="https://www.youtube.com/channel/UChnBV4R9DCfT4TqU0Rr98BQ/featured">HappyPC Питер</a></div>
+              <div class="list__items"><a style="font-size:1.2rem;" class="list__link" href="https://www.youtube.com/channel/UCuQsxUWAr6isMoTkYKSQitA/featured">HappyPC Shorts</a></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+  <script src="./js/base.js"></script>
+  <script src="./js/modal.js"></script>
+  <script src="./js/modalindex.js"></script>
+  <script  src="./js/app.js"></script> 
+</body>
+</html>

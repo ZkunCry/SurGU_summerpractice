@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
       if (response.ok) {
-        alert("Success registration!");
+        alert("Success login");
       } else {
         alert("Error: ", response.json());
       }

@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const mysql = require("mysql");
 const path = require("path");
 const bodyParser = require("body-parser");
+const ejs = require("ejs");
 const PORT = 5000;
 const app = express();
 require("dotenv").config();
@@ -40,28 +41,36 @@ app.post("/registration", (req, res) => {
   connectionDB.query(
     `SELECT * FROM user WHERE email = '${email}' OR login = '${login}'`,
     (error, results, fields) => {
+      console.log(results.length);
       if (error) throw error;
-      if (results.length > 1) res.sendStatus(401).send("User is already exist");
-    }
-  );
+      if (results.length > 0) {
+        res.status(400).send("Пользователь с такими данными уже существует");
+        return;
+      }
+      connectionDB.query(
+        `INSERT INTO user (email, login, password) VALUES ('${email}', '${login}', '${hash}')`,
+        (error, results, fields) => {
+          if (error) throw error;
 
-  connectionDB.query(
-    `INSERT INTO user (email, login, password) VALUES ('${email}', '${login}', '${hash}')`,
-    (error, results, fields) => {
-      if (error) throw error;
-
-      res.sendStatus(200);
+          res.status(200).send("Регистрация прошла успешно");
+        }
+      );
     }
   );
 });
 app.post("/login", (req, res) => {
   const { login, email, password } = req.body;
+  console.log(login);
   const hash = crypto.createHash("sha256").update(password).digest("hex");
   connectionDB.query(
     `SELECT * FROM user WHERE email = '${email}' AND login = '${login}' AND password = '${hash}'`,
     (error, results, fields) => {
+      console.log(results);
       if (error) throw error;
-      if (results.length > 1) res.sendStatus(200);
+      if (results.length > 0) res.status(200).send("Успешная авторизация");
+      else {
+        res.status(400).send("Пользователя с такими данными не существует!");
+      }
     }
   );
 });

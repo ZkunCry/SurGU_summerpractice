@@ -55,4 +55,4 @@ const loginOpen = (event) => {
   modal.open();
 };
 const login = document.querySelector(".login");
-login.addEventListener("click", loginOpen);
+login?.addEventListener("click", loginOpen);

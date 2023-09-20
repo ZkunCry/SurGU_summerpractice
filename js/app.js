@@ -65,9 +65,16 @@ const deleteCookies = () => {
 };
 const dropDownServicesEvent = (event) => {
   const { type } = event.target.dataset;
+  const {target} = event
   if (type === "quit") {
     deleteCookies();
+
     location.reload();
+  }
+  else if(target.closest('.services__dropdown'))
+  {
+    document.querySelector('.dropdown-child').classList.toggle('hide')
+    document.querySelector('.arrow').classList.toggle('rotate')
   }
 };
 document.addEventListener("DOMContentLoaded", () => {

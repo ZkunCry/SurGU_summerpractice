@@ -404,7 +404,6 @@ a {
 }
 .services__inner.account {
   flex-direction: row !important;
-  gap: 3px;
   align-items: start;
   background-color: var(--main-color);
   color: #fff;
@@ -412,29 +411,35 @@ a {
   padding: 0.5rem;
 }
 .arrow {
-  transition: transform 0.5s;
+  transition: transform 0.8s;
 }
 .services__dropdown {
   position: relative;
+  display: flex;
+  gap:5px;
+  justify-content: center;
+  align-items: center;
 }
-.hide {
+
+.dropdown-child.hide{
   visibility: hidden;
-  transform: translateY(-500%);
-  transition: 0.5s visibility, 0.5s transform;
+  transform: translate(-50%,-500%);
+  left:50%;
+  transition: 0.8s visibility, 0.8s transform;
 }
 .dropdown-child {
   position: absolute;
+
   text-align: center;
   font-size: calc(100% - 10%);
   top: 150%;
-  left: -4px;
   width: 115%;
   border-radius: 10px;
   background-color: var(--main-color);
   left: 50%;
   transform: translateX(-50%);
   min-width: 100px;
-  transition: 0.5s visibility, 0.5s transform;
+  transition: 0.8s visibility, 0.8s transform;
 }
 
 .dropdown-item {

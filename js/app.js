@@ -101,9 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
       if (response.ok) {
-        alert("Success login");
+        console.log(response.text());
+
+        alert(response.text());
       } else {
-        alert("Error: ", response.json());
+        response.text().then((value) => alert(value));
       }
     } else if (type === "registration") {
       const { email, password, confirmpassword, username } =

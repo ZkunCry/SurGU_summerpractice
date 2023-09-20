@@ -3,7 +3,7 @@ const crypto = require("crypto");
 const mysql = require("mysql");
 const path = require("path");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
+const cookieParser = require("cookie-parser");
 const PORT = 5000;
 const app = express();
 require("dotenv").config();
@@ -25,6 +25,7 @@ connectionDB.connect(connectDB);
 app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/js", express.static(path.join(__dirname, "js")));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -39,20 +40,26 @@ app.post("/registration", (req, res) => {
   const hash = crypto.createHash("sha256").update(password).digest("hex");
 
   connectionDB.query(
-    `SELECT * FROM user WHERE email = '${email}' OR login = '${login}'`,
+    `SELECT * FROM user WHERE email LIKE BINARY '${email}' OR login LIKE BINARY '${login}'`,
     (error, results, fields) => {
       console.log(results.length);
       if (error) throw error;
       if (results.length > 0) {
-        res.status(400).send("Пользователь с такими данными уже существует");
+        res.sendStatus(400).send("User is already exist");
         return;
       }
       connectionDB.query(
         `INSERT INTO user (email, login, password) VALUES ('${email}', '${login}', '${hash}')`,
         (error, results, fields) => {
           if (error) throw error;
-
-          res.status(200).send("Регистрация прошла успешно");
+          const randomNum = crypto
+            .createHash("sha256")
+            .update(req.body.password + req.body.email)
+            .digest("hex");
+          res.cookie("cookie", randomNum, { maxAge: 90000, httpOnly: true });
+          res.cookie("id", results[0].id);
+          res.cookie("login", results[0].login);
+          res.status(200).send("Success registration");
         }
       );
     }
@@ -63,13 +70,14 @@ app.post("/login", (req, res) => {
   console.log(login);
   const hash = crypto.createHash("sha256").update(password).digest("hex");
   connectionDB.query(
-    `SELECT * FROM user WHERE email = '${email}' AND login = '${login}' AND password = '${hash}'`,
+    `SELECT * FROM user WHERE email LIKE BINARY '${email}' AND login LIKE BINARY '${login}' AND password LIKE BINARY '${hash}'`,
     (error, results, fields) => {
-      console.log(results);
+      console.log(results.id);
       if (error) throw error;
-      if (results.length > 0) res.status(200).send("Успешная авторизация");
+      if (results.length > 0) res.status(200).send("Success login");
       else {
-        res.status(400).send("Пользователя с такими данными не существует!");
+        res.status(400).send("User is not exist");
+        return;
       }
     }
   );
